@@ -1,6 +1,8 @@
-import json, math
+import json, math, os
 
-path = '/Users/niclasbork/Development/sandbox/contacts-app/data/user.json'
+base_dir = os.path.dirname(os.path.abspath(__file__))
+path = os.path.join(base_dir, '../data', 'user.json')
+# print(f"Path to user.json: {path}")
 
 
 class Game:
