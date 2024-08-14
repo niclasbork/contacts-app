@@ -1,6 +1,6 @@
 import json, math
 
-path = '/Users/niclasbork/Development/sandbox/python-course/contacts-app/data/user.json'
+path = '/Users/niclasbork/Development/sandbox/contacts-app/data/user.json'
 
 
 class Game:
