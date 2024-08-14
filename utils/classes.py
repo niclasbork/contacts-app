@@ -1,10 +1,10 @@
 import json, math, os
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(base_dir, '../data', 'user.json')
+file_path = os.path.join(base_dir, '../data', 'contacts.json')
 
 
-# print(f'Path to user.json: {file_path}')
+# print(f'Path to contacts.json: {file_path}')
 
 
 class Game:
@@ -25,9 +25,9 @@ class Game:
 		spaces_l = math.floor(spaces / 2)
 		spaces_r = math.ceil(spaces / 2)
 
-		print('╔' + (size - 2) * '═' + '╗')
-		print('║' + spaces_l * ' ' + text + spaces_r * ' ' + '║')
-		print('╚' + (size - 2) * '═' + '╝')
+		print('=' + (size - 2) * '=' + '=')
+		print('|' + spaces_l * ' ' + text + spaces_r * ' ' + '|')
+		print('=' + (size - 2) * '=' + '=')
 
 	def importFile(self):
 		"""
@@ -102,9 +102,9 @@ class Game:
 			print('=' * 122)
 			print(f'| ID:{'':<1}| Name:{'':<10} | Email:{'':<19} | Number:{'':<8} | Address:{'':<22} | City:{'':<10} |')
 			print('=' * 122)
-			for user in self.data['user']:
+			for contact in self.data['contacts']:
 				print(
-					f'| {user['id']:<3} | {user['name']:<15} | {user['email']:<25} | {user['number']:<15} | {user['address']:<30} | {user['city']:<15} |')
+					f'| {contact['id']:<3} | {contact['name']:<15} | {contact['email']:<25} | {contact['number']:<15} | {contact['address']:<30} | {contact['city']:<15} |')
 			print('=' * 122)
 		else:
 			print('No data to display.')
@@ -115,7 +115,7 @@ class Game:
 		successfully, the new contact data is saved to a JSON file.
 		:return: None
 		"""
-		count = len(self.data['user'])
+		count = len(self.data['contacts'])
 		while True:
 			try:
 				while True:
@@ -169,7 +169,7 @@ class Game:
 					"city": city
 				}
 
-				self.data['user'].append(new_contact)
+				self.data['contacts'].append(new_contact)
 
 				with open(file_path, 'w') as output:
 					json.dump(self.data, output)
@@ -188,7 +188,7 @@ class Game:
 
 		selected_user = str(input('Enter the contact name you want to change: '))
 
-		for contact in self.data['user']:
+		for contact in self.data['contacts']:
 			if contact['name'] == selected_user:
 				print(f'Contact {selected_user} found!')
 				try:
@@ -246,11 +246,11 @@ class Game:
 		selected_user = str(input('Enter the contact\'s name you want to delete: ')).strip()
 		is_delete = False
 
-		for i, contact in enumerate(self.data['user']):
+		for i, contact in enumerate(self.data['contacts']):
 			if contact['name'] == selected_user:
 				print(f'Contact {selected_user} found!')
 
-				del self.data['user'][i]
+				del self.data['contacts'][i]
 
 				with open(file_path, 'w') as output:
 					json.dump(self.data, output)
@@ -263,10 +263,15 @@ class Game:
 		self.displayMenu()
 
 	def searchContact(self):
+		"""
+		Prompts the user to enter a search term to find a contact by name.
+		If a contacts name contains the search term, it prints the contacts name.
+		:return: None
+		"""
 		find_user = str(input('Enter something to find a contact: ')).lower()
 		is_found = False
 
-		for contact in self.data.get('user', []):
+		for contact in self.data.get('contacts', []):
 			if find_user in contact.get('name', '').lower():
 				print(f'Contact found: {contact['name']}')
 				is_found = True

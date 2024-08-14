@@ -13,6 +13,7 @@ The Contacts App is a command-line application designed to manage a list of cont
 
 ## File Structure
 - **`user.json`**: JSON file storing all contact data.
+- **`classes.py`**: Includes all functions and logic.
 - **`main.py`**: Main Python script implementing the contact management functionalities.
 
 ## How to Run
