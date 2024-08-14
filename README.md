@@ -1,5 +1,10 @@
 # Contacts App
 
+## Project title
+Contacts-App
+## Participant
+Niclas Bork
+
 ## Description
 The Contacts App is a command-line application designed to manage a list of contacts. Users can add, display, update, and delete contact information stored in a JSON file. The app provides a simple menu interface for interacting with the contacts.
 
@@ -7,8 +12,8 @@ The Contacts App is a command-line application designed to manage a list of cont
 - **Show Contacts:** View all contacts with detailed information such as ID, Name, Email, Phone Number, Address, and City.
 - **Change Contact:** Modify the details of an existing contact and save the changes.
 - **Add Contact:** Add a new contact to the list and save it to the JSON file.
-- **Delete Contact:** Remove a contact from the list.
-- **Search Contact:** Search functionality to find contacts by name, email, or phone number
+- **Delete Contact:** Remove a contact from the list and delete it form the JSON file.
+- **Search Contact:** Search functionality to find contacts by name.
 - **User-Friendly Interface:** A menu-driven interface that guides users through different actions.
 
 ## File Structure
