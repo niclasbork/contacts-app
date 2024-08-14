@@ -106,6 +106,7 @@ class Game:
 				print(
 					f'| {contact['id']:<3} | {contact['name']:<15} | {contact['email']:<25} | {contact['number']:<15} | {contact['address']:<30} | {contact['city']:<15} |')
 			print('=' * 122)
+			print()
 		else:
 			print('No data to display.')
 
@@ -233,7 +234,7 @@ class Game:
 					print('Wrong input! Please enter a valid name.')
 				break
 		if not is_update:
-			print(f'Contact with the name {selected_user} was not found.')
+			print(f'Contact with the name {selected_user} was not found.\n')
 			self.displayMenu()
 
 	def deleteContact(self):
@@ -259,7 +260,7 @@ class Game:
 				is_delete = True
 				break
 		if not is_delete:
-			print(f'Contact with the name {selected_user} was not found.\n')
+			print(f'Contact with the name {selected_user} was not found.\n\n')
 		self.displayMenu()
 
 	def searchContact(self):
@@ -273,8 +274,8 @@ class Game:
 
 		for contact in self.data.get('contacts'):
 			if find_user in contact.get('name', '').lower():
-				print(f'Contact found: {contact['name']}')
+				print(f'Contact found: {contact['name']}.\n')
 				is_found = True
 		if not is_found:
-			print('No contact found matching your search.')
+			print(f'No contact found matching your search: {find_user}.\n')
 		self.displayMenu()
