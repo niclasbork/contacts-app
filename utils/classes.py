@@ -181,7 +181,7 @@ class Game:
 	def changeContact(self):
 		"""
 		Updates an existing contact. The updated contact information is then saved to a JSON file.
-		:return:
+		:return: None
 		"""
 		is_update = False
 		self.displayContacts()
@@ -271,7 +271,7 @@ class Game:
 		find_user = str(input('Enter something to find a contact: ')).lower()
 		is_found = False
 
-		for contact in self.data.get('contacts', []):
+		for contact in self.data.get('contacts'):
 			if find_user in contact.get('name', '').lower():
 				print(f'Contact found: {contact['name']}')
 				is_found = True
