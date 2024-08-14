@@ -1,10 +1,10 @@
 import json, math, os
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-path = os.path.join(base_dir, '../data', 'user.json')
+file_path = os.path.join(base_dir, '../data', 'user.json')
 
 
-# print(f'Path to user.json: {path}')
+# print(f'Path to user.json: {file_path}')
 
 
 class Game:
@@ -35,7 +35,7 @@ class Game:
 		:return: JSON data
 		"""
 		try:
-			with open(path, 'r') as file:
+			with open(file_path, 'r') as file:
 				self.data = json.load(file)
 		except FileNotFoundError:
 			print('The file was not found.')
@@ -171,7 +171,7 @@ class Game:
 
 				self.data['user'].append(new_contact)
 
-				with open(path, 'w') as output:
+				with open(file_path, 'w') as output:
 					json.dump(self.data, output)
 				break
 			except ValueError:
@@ -195,31 +195,52 @@ class Game:
 					new_name = str(input('Enter NEW contact name: '))
 					if new_name:
 						contact['name'] = new_name
+						print('Updated!')
+					else:
+						print('Skipped!')
 					new_email = str(input('Enter NEW contact email: '))
 					if new_email:
 						contact['email'] = new_email
+						print('Updated!')
+					else:
+						print('Skipped!')
 					new_number = str(input('Enter NEW contact number: '))
 					if new_number:
 						contact['number'] = new_number
+						print('Updated!')
+					else:
+						print('Skipped!')
 					new_address = str(input('Enter NEW contact address: '))
 					if new_address:
 						contact['address'] = new_address
+						print('Updated!')
+					else:
+						print('Skipped!')
 					new_city = str(input('Enter NEW contact city: '))
 					if new_city:
 						contact['city'] = new_city
+						print('Updated!')
+					else:
+						print('Skipped!')
 					is_update = True
 					print(f'Data {selected_user} successfully changed to {new_name}.\n')
-					with open(path, 'w') as output:
+					with open(file_path, 'w') as output:
 						json.dump(self.data, output)
 					print(f'Some next steps {new_name}?')
+					print('Update complete! 🛰️')
 					self.displayMenu()
 				except ValueError:
 					print('Wrong input! Please enter a valid name.')
 				break
 		if not is_update:
 			print(f'Contact with the name {selected_user} was not found.')
+			self.displayMenu()
 
 	def deleteContact(self):
+		"""
+		Deletes a contact from the stored contact list based on the name provided by the user.
+		:return: None
+		"""
 		self.displayContacts()
 
 		selected_user = str(input('Enter the contact\'s name you want to delete: ')).strip()
@@ -231,7 +252,7 @@ class Game:
 
 				del self.data['user'][i]
 
-				with open(path, 'w') as output:
+				with open(file_path, 'w') as output:
 					json.dump(self.data, output)
 
 				print(f'Contact {selected_user} deleted successfully!\n')
@@ -242,5 +263,13 @@ class Game:
 		self.displayMenu()
 
 	def searchContact(self):
-		find_user = str(input('Enter something to find a contact: '))
+		find_user = str(input('Enter something to find a contact: ')).lower()
+		is_found = False
+
+		for contact in self.data.get('user', []):
+			if find_user in contact.get('name', '').lower():
+				print(f'Contact found: {contact['name']}')
+				is_found = True
+		if not is_found:
+			print('No contact found matching your search.')
 		self.displayMenu()

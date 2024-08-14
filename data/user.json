@@ -1,1 +1,20 @@
-{"user": [{"id": 1, "name": "Niclas", "email": "xxx@aol.com", "number": "19394030", "address": "5th Ave", "city": "New York City"}, {"id": 2, "name": "Peter Parker", "email": "hellopeter@gmail.com", "number": 12345, "address": "Unknown", "city": "NYC"}]}
+{
+	"user": [
+		{
+			"id": 1,
+			"name": "Peter Parker",
+			"email": "hellopeter@gmail.com",
+			"number": 12345,
+			"address": "Unknown",
+			"city": "NYC"
+		},
+		{
+			"id": 2,
+			"name": "Peter Pan",
+			"email": "thepeterpan@nimmerland.de",
+			"number": 399929,
+			"address": "Unknown",
+			"city": "Nimmerland City"
+		}
+	]
+}
