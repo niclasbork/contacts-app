@@ -2,7 +2,9 @@ import json, math, os
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 path = os.path.join(base_dir, '../data', 'user.json')
-# print(f"Path to user.json: {path}")
+
+
+# print(f'Path to user.json: {path}')
 
 
 class Game:
@@ -59,7 +61,7 @@ class Game:
 		The user has 1-6 choices of functions
 		:return: User input
 		"""
-		option = input('Choose[1-6]: ⚡️ ').strip()
+		option = input('Choose[1-6]: ⚡️ >> ').strip()
 		if option == '':
 			print('Please choose a number. 👽')
 			self.userSelection()
@@ -79,6 +81,8 @@ class Game:
 					self.displayMenu()
 				elif option == 4:
 					self.deleteContact()
+				elif option == 5:
+					self.searchContact()
 				elif option == 6:
 					print('Good bye! 🖖')
 					exit()
@@ -189,15 +193,20 @@ class Game:
 				print(f'Contact {selected_user} found!')
 				try:
 					new_name = str(input('Enter NEW contact name: '))
-					contact['name'] = new_name
+					if new_name:
+						contact['name'] = new_name
 					new_email = str(input('Enter NEW contact email: '))
-					contact['email'] = new_email
+					if new_email:
+						contact['email'] = new_email
 					new_number = str(input('Enter NEW contact number: '))
-					contact['number'] = new_number
+					if new_number:
+						contact['number'] = new_number
 					new_address = str(input('Enter NEW contact address: '))
-					contact['address'] = new_address
+					if new_address:
+						contact['address'] = new_address
 					new_city = str(input('Enter NEW contact city: '))
-					contact['city'] = new_city
+					if new_city:
+						contact['city'] = new_city
 					is_update = True
 					print(f'Data {selected_user} successfully changed to {new_name}.\n')
 					with open(path, 'w') as output:
@@ -206,6 +215,7 @@ class Game:
 					self.displayMenu()
 				except ValueError:
 					print('Wrong input! Please enter a valid name.')
+				break
 		if not is_update:
 			print(f'Contact with the name {selected_user} was not found.')
 
@@ -229,4 +239,8 @@ class Game:
 				break
 		if not is_delete:
 			print(f'Contact with the name {selected_user} was not found.\n')
+		self.displayMenu()
+
+	def searchContact(self):
+		find_user = str(input('Enter something to find a contact: '))
 		self.displayMenu()

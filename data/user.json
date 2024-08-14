@@ -1,12 +1,1 @@
-{
-	"user": [
-		{
-			"id": 1,
-			"name": "Niclas",
-			"email": "niclasbork@aol.com",
-			"number": 3919293849,
-			"address": "5th Ave",
-			"city": "New York City"
-		}
-	]
-}
+{"user": [{"id": 1, "name": "Niclas", "email": "xxx@aol.com", "number": "19394030", "address": "5th Ave", "city": "New York City"}, {"id": 2, "name": "Peter Parker", "email": "hellopeter@gmail.com", "number": 12345, "address": "Unknown", "city": "NYC"}]}
