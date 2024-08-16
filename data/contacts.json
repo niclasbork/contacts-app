@@ -1,1 +1,1 @@
-{"contacts": [{"id": 1, "name": "Peter Parker", "email": "peter.parker@gmail.com", "number": 393992902, "address": "Unknown", "city": "New York City"}]}
+{"contacts": [{"id": 1, "name": "Peter Parker", "email": "peter.parker@gmail.com", "number": 393992902, "address": "Unknown", "city": "New York City"}, {"id": 2, "name": "Peter Pan", "email": "pp@gmail.com", "number": 393920, "address": "Unknown", "city": "Nimmerland"}]}

@@ -271,11 +271,12 @@ class Game:
 		"""
 		find_user = str(input('Enter something to find a contact: ')).lower()
 		is_found = False
-
+		print(f'Contact found:')
 		for contact in self.data.get('contacts'):
 			if find_user in contact.get('name', '').lower():
-				print(f'Contact found: {contact['name']}.\n')
+				print(contact['name'])
 				is_found = True
+		print()
 		if not is_found:
 			print(f'No contact found matching your search: {find_user}.\n')
 		self.displayMenu()
