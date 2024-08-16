@@ -9,7 +9,7 @@
 
 from utils import classes as cl
 
-root = cl.Game('Welcome to the Contacts-App. What do you want to do?', 70)
+root = cl.App('Welcome to the Contacts-App. What do you want to do?', 70)
 root.importFile()
 root.prettyPrint()
 root.displayMenu()

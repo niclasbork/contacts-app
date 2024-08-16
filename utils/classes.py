@@ -7,7 +7,7 @@ file_path = os.path.join(base_dir, '../data', 'contacts.json')
 # print(f'Path to contacts.json: {file_path}')
 
 
-class Game:
+class App:
 	def __init__(self, text, size):
 		self.text = text
 		self.size = size
@@ -15,8 +15,8 @@ class Game:
 	def prettyPrint(self):
 		"""
 		Prints a text inside a box.
-		:param self.text: - str: Input converted to string for inside the box
-		:param self.size: - int: width of the box: number of '-'
+		:param text: - str: Input converted to string for inside the box
+		:param size: - int: width of the box: number of '-'
 		:return: None
 		"""
 		text = str(self.text)
