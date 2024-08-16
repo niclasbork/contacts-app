@@ -42,6 +42,14 @@ class Game:
 		except json.JSONDecodeError:
 			print('Error decoding the JSON file.')
 
+	def writeFile(self):
+		"""
+		Writes the data stored in the `self.data` attribute to a JSON file.
+		:return: None
+		"""
+		with open(file_path, 'w') as output:
+			json.dump(self.data, output)
+
 	def displayMenu(self):
 		"""
 		The user is prompted to complete the next steps or exit the app
@@ -172,8 +180,7 @@ class Game:
 
 				self.data['contacts'].append(new_contact)
 
-				with open(file_path, 'w') as output:
-					json.dump(self.data, output)
+				self.writeFile()
 				break
 			except ValueError:
 				print('Wrong input. Please enter a correct format.')
@@ -225,8 +232,7 @@ class Game:
 						print('Skipped!')
 					is_update = True
 					print(f'Data {selected_user} successfully changed to {new_name}.\n')
-					with open(file_path, 'w') as output:
-						json.dump(self.data, output)
+					self.writeFile()
 					print(f'Some next steps {new_name}?')
 					print('Update complete! 🛰️')
 					self.displayMenu()
@@ -253,8 +259,7 @@ class Game:
 
 				del self.data['contacts'][i]
 
-				with open(file_path, 'w') as output:
-					json.dump(self.data, output)
+				self.writeFile()
 
 				print(f'Contact {selected_user} deleted successfully!\n')
 				is_delete = True
